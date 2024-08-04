@@ -1,0 +1,10 @@
+﻿{
+  "applications": {
+    "Saru.Todo.Web": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44349",
+      "path": "../../../src/Saru.Todo.Web/Saru.Todo.Web.csproj",
+      "kubernetesService": ".*-web$"
+    }
+  }
+}

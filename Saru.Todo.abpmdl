@@ -1,0 +1,89 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.Account": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "8.2.1",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Saru.Todo.Application": {
+      "path": "src/Saru.Todo.Application/Saru.Todo.Application.abppkg",
+      "folder": "src"
+    },
+    "Saru.Todo.Application.Tests": {
+      "path": "test/Saru.Todo.Application.Tests/Saru.Todo.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Saru.Todo.Domain.Shared": {
+      "path": "src/Saru.Todo.Domain.Shared/Saru.Todo.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Saru.Todo.Application.Contracts": {
+      "path": "src/Saru.Todo.Application.Contracts/Saru.Todo.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Saru.Todo.HttpApi": {
+      "path": "src/Saru.Todo.HttpApi/Saru.Todo.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Saru.Todo.HttpApi.Client": {
+      "path": "src/Saru.Todo.HttpApi.Client/Saru.Todo.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Saru.Todo.Web": {
+      "path": "src/Saru.Todo.Web/Saru.Todo.Web.abppkg",
+      "folder": "src"
+    },
+    "Saru.Todo.Web.Tests": {
+      "path": "test/Saru.Todo.Web.Tests/Saru.Todo.Web.Tests.abppkg",
+      "folder": "test"
+    },
+    "Saru.Todo.EntityFrameworkCore.Tests": {
+      "path": "test/Saru.Todo.EntityFrameworkCore.Tests/Saru.Todo.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Saru.Todo.EntityFrameworkCore": {
+      "path": "src/Saru.Todo.EntityFrameworkCore/Saru.Todo.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Saru.Todo.TestBase": {
+      "path": "test/Saru.Todo.TestBase/Saru.Todo.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Saru.Todo.Domain.Tests": {
+      "path": "test/Saru.Todo.Domain.Tests/Saru.Todo.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Saru.Todo.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Saru.Todo.HttpApi.Client.ConsoleTestApp/Saru.Todo.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "Saru.Todo.DbMigrator": {
+      "path": "src/Saru.Todo.DbMigrator/Saru.Todo.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "Saru.Todo.Domain": {
+      "path": "src/Saru.Todo.Domain/Saru.Todo.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

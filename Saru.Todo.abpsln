@@ -1,0 +1,25 @@
+{
+  "id": "74259175-bde4-41de-a77d-c93ad82a4b2f",
+  "template": "app",
+  "versions": {
+    "AbpFramework": "8.2.1",
+    "AbpStudio": "0.7.4"
+  },
+  "modules": {
+    "Saru.Todo": {
+      "path": "Saru.Todo.abpmdl"
+    }
+  }, 
+  "runProfiles": {
+    "Default": {
+      "path": "etc/abp-studio/run-profiles/Default.abprun.json"
+    }
+  },
+  "options": {
+    "httpRequests": {
+        "ignoredUrls": [
+          "^/metrics$"
+      ]
+    }
+  }
+}
