@@ -96,22 +96,5 @@ public class TodoDbContext :
         //});
     }
 
-    public override int SaveChanges()
-    {
-        var datas = ChangeTracker.Entries<IBaseEntity>();
-
-        foreach (var data in datas)
-        {
-            _ = data.State switch
-            {
-                EntityState.Added => data.Entity.Created = DateTime.Now,
-                EntityState.Modified => data.Entity.Modified = DateTime.Now,
-                _ => DateTime.Now
-            };
-        }
-
-        return base.SaveChanges();
-    }
-
     public DbSet<TodoItem> TodoItems { get; set; }
 }

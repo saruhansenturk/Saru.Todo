@@ -92,6 +92,19 @@ public class TodoWebModule : AbpModule
             });
         });
 
+
+        // Auto configurate api endpoints
+        PreConfigure<AbpAspNetCoreMvcOptions>(options =>
+        {
+            options
+                .ConventionalControllers
+                .Create(typeof(TodoApplicationModule).Assembly, opt =>
+                {
+                    opt.RootPath = "volosoft/todo";
+                });
+        });
+
+
         if (!hostingEnvironment.IsDevelopment())
         {
             PreConfigure<AbpOpenIddictAspNetCoreOptions>(options =>
