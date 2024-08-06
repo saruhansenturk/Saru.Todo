@@ -1,5 +1,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Saru.Todo.Entities;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -17,6 +18,7 @@ using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.Domain.Entities;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Saru.Todo.EntityFrameworkCore;
 
@@ -95,6 +97,25 @@ public class TodoDbContext :
         //    //...
         //});
     }
+
+    protected override void ApplyAbpConceptsForAddedEntity(EntityEntry entry)
+    {
+        var datas = ChangeTracker.Entries<IBaseEntity>();
+
+        foreach (var entityEntry in datas)
+        {
+            _ = entityEntry.State switch
+            {
+                EntityState.Added => entityEntry.Entity.Created = DateTime.Now,
+                EntityState.Modified => entityEntry.Entity.Modified = DateTime.Now,
+                _ => DateTime.Now
+            };
+        }
+
+
+        base.ApplyAbpConceptsForAddedEntity(entry);
+    }
+
 
     public DbSet<TodoItem> TodoItems { get; set; }
 }

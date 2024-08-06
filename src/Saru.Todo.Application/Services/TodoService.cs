@@ -48,7 +48,8 @@ namespace Saru.Todo.Services
             TodoItemDto mappedTodo = new()
             {
                 Content = createdTodo.Content,
-                IsDone = createdTodo.IsDone
+                IsDone = createdTodo.IsDone,
+                Created = createdTodo.Created
             };
 
             return mappedTodo;

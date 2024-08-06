@@ -1,5 +1,9 @@
 using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Saru.Todo.Entities;
+using Volo.Abp.Auditing;
+using Volo.Abp.AuditLogging;
 using Volo.Abp.Uow;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -46,6 +50,21 @@ public class TodoEntityFrameworkCoreModule : AbpModule
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
+        });
+
+        Configure<AbpAuditLoggingDbContext>(auditContext =>
+        {
+            var datas = auditContext.ChangeTracker.Entries<IBaseEntity>();
+
+            foreach (var entityEntry in datas)
+            {
+                _ = entityEntry.State switch
+                {
+                    EntityState.Added => entityEntry.Entity.Created = DateTime.Now,
+                    EntityState.Modified => entityEntry.Entity.Modified = DateTime.Now,
+                    _ => DateTime.Now
+                };
+            }
         });
 
         Configure<AbpDbContextOptions>(options =>
