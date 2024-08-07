@@ -14,10 +14,7 @@ namespace Saru.Todo.Services
     {
         private readonly IRepository<TodoItem, Guid> _todoItemRepository;
 
-        public TodoService(IRepository<TodoItem, Guid> todoItemRepository)
-        {
-            _todoItemRepository = todoItemRepository;
-        }
+        public TodoService(IRepository<TodoItem, Guid> todoItemRepository) => _todoItemRepository = todoItemRepository;
 
         public async Task<List<TodoItemDto>> GetListAsync()
         {
@@ -27,7 +24,7 @@ namespace Saru.Todo.Services
             {
                 Content = t.Content,
                 IsDone = t.IsDone,
-                Created = t.Created
+                Created = t.CreationTime
             }).ToList();
 
             return mappedList.Count != 0 ? mappedList : new List<TodoItemDto>();
@@ -49,14 +46,14 @@ namespace Saru.Todo.Services
             {
                 Content = createdTodo.Content,
                 IsDone = createdTodo.IsDone,
-                Created = createdTodo.Created
+                Created = createdTodo.CreationTime
             };
 
             return mappedTodo;
         }
 
 
-        public async Task DeleteAsync(Guid id) => await _todoItemRepository.DeleteAsync(id: id, autoSave: true);
+        public async Task SoftDeleteAsync(Guid id) => await _todoItemRepository.DeleteAsync(id: id, autoSave: true);
 
     }
 }

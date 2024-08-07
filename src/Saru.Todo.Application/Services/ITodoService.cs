@@ -12,6 +12,6 @@ namespace Saru.Todo.Services
     {
         Task<List<TodoItemDto>> GetListAsync();
         Task<TodoItemDto> CreateAsync(CreateItemDto? item);
-        Task DeleteAsync(Guid id);
+        Task SoftDeleteAsync(Guid id);
     }
 }

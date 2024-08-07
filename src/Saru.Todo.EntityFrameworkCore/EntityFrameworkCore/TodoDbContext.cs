@@ -98,23 +98,23 @@ public class TodoDbContext :
         //});
     }
 
-    protected override void ApplyAbpConceptsForAddedEntity(EntityEntry entry)
-    {
-        var datas = ChangeTracker.Entries<IBaseEntity>();
+    //protected override void ApplyAbpConceptsForAddedEntity(EntityEntry entry)
+    //{
+    //    var datas = ChangeTracker.Entries<IBaseEntity>();
 
-        foreach (var entityEntry in datas)
-        {
-            _ = entityEntry.State switch
-            {
-                EntityState.Added => entityEntry.Entity.Created = DateTime.Now,
-                EntityState.Modified => entityEntry.Entity.Modified = DateTime.Now,
-                _ => DateTime.Now
-            };
-        }
+    //    foreach (var entityEntry in datas)
+    //    {
+    //        _ = entityEntry.State switch
+    //        {
+    //            EntityState.Added => entityEntry.Entity.Created = DateTime.Now,
+    //            EntityState.Modified => entityEntry.Entity.Modified = DateTime.Now,
+    //            _ => DateTime.Now
+    //        };
+    //    }
 
 
-        base.ApplyAbpConceptsForAddedEntity(entry);
-    }
+    //    base.ApplyAbpConceptsForAddedEntity(entry);
+    //}
 
 
     public DbSet<TodoItem> TodoItems { get; set; }

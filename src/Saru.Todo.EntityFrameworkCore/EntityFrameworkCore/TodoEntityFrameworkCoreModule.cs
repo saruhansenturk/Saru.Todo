@@ -52,20 +52,11 @@ public class TodoEntityFrameworkCoreModule : AbpModule
             options.AddDefaultRepositories(includeAllEntities: true);
         });
 
-        Configure<AbpAuditLoggingDbContext>(auditContext =>
+        context.Services.Configure<AbpAuditingOptions>(opt =>
         {
-            var datas = auditContext.ChangeTracker.Entries<IBaseEntity>();
-
-            foreach (var entityEntry in datas)
-            {
-                _ = entityEntry.State switch
-                {
-                    EntityState.Added => entityEntry.Entity.Created = DateTime.Now,
-                    EntityState.Modified => entityEntry.Entity.Modified = DateTime.Now,
-                    _ => DateTime.Now
-                };
-            }
+            opt.IsEnabled = true;
         });
+
 
         Configure<AbpDbContextOptions>(options =>
         {
