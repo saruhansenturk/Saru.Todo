@@ -1,4 +1,5 @@
 ﻿using Localization.Resources.AbpUi;
+using Microsoft.Extensions.DependencyInjection;
 using Saru.Todo.Localization;
 using Volo.Abp.Account;
 using Volo.Abp.AspNetCore.Mvc;
@@ -12,21 +13,21 @@ using Volo.Abp.TenantManagement;
 
 namespace Saru.Todo;
 
- [DependsOn(
-    typeof(TodoApplicationContractsModule),
-    typeof(AbpPermissionManagementHttpApiModule),
-    typeof(AbpSettingManagementHttpApiModule),
-    typeof(AbpAccountHttpApiModule),
-    typeof(AbpIdentityHttpApiModule),
-    typeof(AbpTenantManagementHttpApiModule),
-    typeof(AbpFeatureManagementHttpApiModule)
-    )]
+[DependsOn(
+   typeof(TodoApplicationContractsModule),
+   typeof(AbpPermissionManagementHttpApiModule),
+   typeof(AbpSettingManagementHttpApiModule),
+   typeof(AbpAccountHttpApiModule),
+   typeof(AbpIdentityHttpApiModule),
+   typeof(AbpTenantManagementHttpApiModule),
+   typeof(AbpFeatureManagementHttpApiModule)
+   )]
 public class TodoHttpApiModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         ConfigureLocalization();
-        
+
     }
 
     private void ConfigureLocalization()

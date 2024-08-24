@@ -36,6 +36,7 @@ using Volo.Abp.TenantManagement.Web;
 using System;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
@@ -125,6 +126,17 @@ public class TodoWebModule : AbpModule
     {
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
+
+        context.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", builder =>
+            {
+                builder
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+        });
 
         if (!configuration.GetValue<bool>("App:DisablePII"))
         {
@@ -294,6 +306,7 @@ public class TodoWebModule : AbpModule
         app.UseUnitOfWork();
         app.UseDynamicClaims();
         app.UseAuthorization();
+        app.UseCors("AllowAll");
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>
         {
