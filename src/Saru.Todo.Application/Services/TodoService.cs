@@ -22,6 +22,7 @@ namespace Saru.Todo.Services
 
             var mappedList = listofTodos.Select(t => new TodoItemDto
             {
+                Id = t.Id,
                 Content = t.Content,
                 IsDone = t.IsDone,
                 Created = t.CreationTime
